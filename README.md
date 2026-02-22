@@ -1,0 +1,1 @@
+基本的に[lazyvim](https://www.lazyvim.org/)でやります。
