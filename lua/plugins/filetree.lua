@@ -11,7 +11,6 @@ return {
   
   {
     "nvim-tree/nvim-tree.lua",
-    -- 依存関係をmini.iconsに変更
     dependencies = { "echasnovski/mini.icons" },
     config = function()
       require("nvim-tree").setup({

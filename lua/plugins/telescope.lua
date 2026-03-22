@@ -4,25 +4,22 @@ return {
     tag = "0.1.8",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      -- fzf-nativeを追加
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
     },
     config = function()
       require("telescope").setup({
         defaults = {
-          -- 必要に応じて設定を追加
         },
         extensions = {
           fzf = {
             fuzzy = true,
             override_generic_sorter = true,
             override_file_sorter = true,
-            case_mode = "smart_case", -- 大文字小文字を賢く判定
+            case_mode = "smart_case",
           }
         }
       })
 
-      -- fzf拡張をロード
       require("telescope").load_extension("fzf")
 
       -- キーマップ

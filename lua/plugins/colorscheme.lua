@@ -1,24 +1,34 @@
 return {
-  {
-    "projekt0n/github-nvim-theme",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("github-theme").setup({
-        options = {
-          transparent = false,
-          terminal_colors = true,
-        },
-        styles = {
-          comments = "italic",
-          keywords = "bold",
-          functions = "italic,bold",
-        },
-      })
-      vim.cmd.colorscheme("github_dark_default")
+  -- material.vimのdeep ocean
+  'marko-cerovac/material.nvim',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.g.material_style = "deep ocean"
 
-      vim.api.nvim_set_hl(0, "LineNr", { fg = "#6a737d" })
-      vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff7b72", bold = true })
-    end,
-  },
+    require('material').setup({
+      styles = {
+        comments = { italic = true },
+        keywords = { bold = false },
+        functions = { bold = false },
+        variables = {},
+        operators = {},
+        types = {},
+      },
+      plugins = {
+        ["alpha"] = true,
+        ["telescope"] = true,
+        ["nvim-cmp"] = true,
+        ["nvim-navic"] = true,
+        ["which-key"] = true,
+      },
+      custom_highlights = {
+        LineNr = { fg = "#4b5668" },
+        CursorLineNr = { fg = "#c678dd", bold = true },
+        
+      }
+    })
+
+    vim.cmd.colorscheme 'material'
+  end
 }
