@@ -8,7 +8,6 @@ return {
     end,
   },
 
-  
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "echasnovski/mini.icons" },
