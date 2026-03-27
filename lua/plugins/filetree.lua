@@ -1,16 +1,15 @@
 return {
   {
-    "echasnovski/mini.icons",
+    "nvim-tree/nvim-web-devicons",
     opts = {},
     config = function(_, opts)
-      require("mini.icons").setup(opts)
-      MiniIcons.mock_nvim_web_devicons()
+      require("nvim-web-devicons").setup(opts)
     end,
   },
 
   {
     "nvim-tree/nvim-tree.lua",
-    dependencies = { "echasnovski/mini.icons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("nvim-tree").setup({
         sort_by = "case_sensitive",
