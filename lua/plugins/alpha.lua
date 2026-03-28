@@ -24,6 +24,7 @@ return {
       dashboard.button("r", "  Recent Files", "<cmd>Telescope oldfiles<CR>"),
       dashboard.button("c", "  Config", "<cmd>e $MYVIMRC<CR>"),
       dashboard.button("l", "󰒲  Lazy Package", "<cmd>Lazy<CR>"),
+      dashboard.button("m", "󱐥  Mason Package", "<cmd>Mason<CR>"),
       dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
     }
 
