@@ -1,5 +1,5 @@
 # nvim settings
-
+TSModuleInfo
 AIを活用して設定したNeovimの設定ファイルです。LazyVimベース。
 
 ## Setup
@@ -23,3 +23,4 @@ nvim
 
 * 個人用の設定です
 * 環境によっては動かない可能性があります
+* なぜかtreesitterが動かない言語が多いです
