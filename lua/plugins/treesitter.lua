@@ -1,21 +1,25 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" }, -- ← これ重要
+  event = { "BufReadPost", "BufNewFile" },
+  lazy = vim.fn.argc(-1) == 0,
+  config = function()
+    local status, treesitter = pcall(require, "nvim-treesitter.configs")
+    if not status then
+      return
+    end
 
-  opts = {
-
-    parser_install_dir = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/parser",
-
-    ensure_installed = {
-      "lua", "vim", "vimdoc",
-      "c", "cpp", "python", "rust", "go",
-      "javascript", "typescript", "jsx", "tsx",
-      "bash", "json", "yaml", "toml",
-    },
-
-    highlight = {
-      enable = true,
-    },
-  },
+    treesitter.setup({
+      ensure_installed = {
+        "lua", "python", "rust", "javascript", "typescript", "tsx",
+        "markdown", "markdown_inline", "vim", "vimdoc", "query"
+      },
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      },
+    })
+  end,
 }
