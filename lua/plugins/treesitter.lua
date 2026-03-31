@@ -2,7 +2,8 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
-  lazy = vim.fn.argc(-1) == 0,
+  lazy = false,
+  priority = 1000,
   config = function()
     local status, treesitter = pcall(require, "nvim-treesitter.configs")
     if not status then
@@ -11,8 +12,9 @@ return {
 
     treesitter.setup({
       ensure_installed = {
-        "lua", "python", "rust", "javascript", "typescript", "tsx",
-        "markdown", "markdown_inline", "vim", "vimdoc", "query"
+        "lua", "python", "vim", "vimdoc", "bash", "sql", "json", "yaml", "toml",
+        "c", "cpp", "python", "rust", "go", "javascript", "typescript", "tsx",
+        "html", "css", "xml", "tex", "markdown", "markdown_inline"
       },
       highlight = {
         enable = true,
