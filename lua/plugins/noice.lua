@@ -32,6 +32,18 @@ return {
       },
     },
   },
+
+  config = function(_, opts)
+    require("noice").setup(opts)
+
+    local highlights = {
+      NoiceCmdlinePopupBorder = { fg = "#7aa2f7" },
+    }
+    for group, settings in pairs(highlights) do
+      vim.api.nvim_set_hl(0, group, settings)
+    end
+  end,
+
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
