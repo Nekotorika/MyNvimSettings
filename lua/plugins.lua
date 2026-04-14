@@ -23,7 +23,8 @@ require("lazy").setup({
     { import = "plugins.snippets" },
     { import = "plugins.ui" },
     { import = "plugins.telescope" },
-    { import = "plugins.alpha" },
+    { import = "plugins.snacks" },
+    { import = "plugins.noice" },
   },
 
   defaults = { lazy = false, version = false },
