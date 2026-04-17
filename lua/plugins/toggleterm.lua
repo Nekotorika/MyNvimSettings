@@ -1,6 +1,7 @@
 return {
   "akinsho/toggleterm.nvim",
   version = "*",
+  event = "VeryLazy",
   keys = {
     { "<leader>o", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
   },

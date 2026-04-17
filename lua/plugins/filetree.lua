@@ -10,73 +10,82 @@ return {
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeOpen" },
-    dependencies = { "echasnovski/mini.icons" },
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "echasnovski/mini.icons",
+      "MunifTanjim/nui.nvim",
+    },
     config = function()
-      require("nvim-tree").setup({
-        sort_by = "case_sensitive",
-
-        view = {
+      require("neo-tree").setup({
+        window = {
+          position = "left",
           width = 30,
+          mappings = {},
         },
 
-        renderer = {
-          group_empty = true,
-          icons = {
-            web_devicons = {
-              file = {
-                enable = true,
-                color = true,
-              },
-              folder = {
-                enable = true,
-                color = true,
-              },
-            },
+        filesystem = {
+          filtered_items = {
+            visible = false, -- dotfilesを表示するかどうか
+            hide_dotfiles = true,
+            hide_gitignored = false,
+          },
+          follow_current_file = {
+            enabled = true, -- 現在のファイルをツリーで追従
+          },
+          group_empty_dirs = true, -- 空のディレクトリをまとめる
+        },
 
-            git_placement = "after",
-            symlink_arrow = " ➛ ",
-
-            show = {
-              file = true,
-              folder = true,
-              folder_arrow = true,
-              git = true,
+        -- アイコンやレンダリングの設定
+        default_component_configs = {
+          indent = {
+            with_expanders = true, -- フォルダの開閉ガイドを表示
+            expander_collapsed = "",
+            expander_expanded = "",
+          },
+          icon = {
+            folder_closed = "",
+            folder_open = "",
+            folder_empty = "󰜌",
+            default = "*",
+            highlight = "NeoTreeFileIcon",
+          },
+          git_status = {
+            symbols = {
+              added = "✚",
+              modified = "",
+              deleted = "✖",
+              renamed = "󰁔",
+              untracked = "",
+              ignored = "",
+              unstaged = "󰄱",
+              staged = "",
+              conflict = "",
             },
           },
         },
-
-        diagnostics = {
-          enable = true,
-          show_on_dirs = true,
-          show_on_open_dirs = true,
-          icons = {
-            hint = "󰌵",
-            info = "󰋼",
-            warning = "󰀪",
-            error = "󰅚",
-          },
-        },
-
-        filters = {
-          dotfiles = false,
-        },
-
-        on_attach = function(bufnr)
-          local api = require("nvim-tree.api")
-          local function opts(desc)
-            return {
-              desc = "nvim-tree: " .. desc,
-              buffer = bufnr,
-              noremap = true,
-              silent = true,
-              nowait = true,
-            }
-          end
-          vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
-        end,
       })
+
+      vim.keymap.set("n", "<leader>a", function()
+        if vim.bo.filetype == "neo-tree" then
+          vim.cmd("wincmd p")
+        else
+          local neotree_win = nil
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            if vim.bo[buf].filetype == "neo-tree" then
+              neotree_win = win
+              break
+            end
+          end
+          if neotree_win then
+            vim.api.nvim_set_current_win(neotree_win)
+          else
+            vim.cmd("Neotree focus")
+          end
+        end
+      end, { desc = "Switch focus between Neo-tree and editor" })
     end,
   },
 }

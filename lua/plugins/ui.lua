@@ -12,6 +12,7 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
+    event = "BufReadPost",
     dependencies = { "echasnovski/mini.icons" },
     config = function()
       require("lualine").setup({
@@ -33,14 +34,15 @@ return {
 
   {
     "akinsho/bufferline.nvim",
+    event = "BufReadPost",
     dependencies = { "echasnovski/mini.icons" },
     config = function()
       require("bufferline").setup({
         options = {
           offsets = {
             {
-              filetype = "NvimTree",
-              text = "File Explorer",
+              filetype = "neo-tree",
+              text = "Directories",
               highlight = "Directory",
               separator = true,
             },
@@ -52,6 +54,10 @@ return {
 
   {
     "numToStr/Comment.nvim",
+    keys = {
+      { "gc", mode = { "n", "v" }, desc = "Comment toggle linewise" },
+      { "gb", mode = { "n", "v" }, desc = "Comment toggle blockwise" },
+    },
     opts = {},
   },
 }

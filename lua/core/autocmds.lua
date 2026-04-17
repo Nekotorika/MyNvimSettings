@@ -33,22 +33,28 @@ autocmd("ColorScheme", {
 })
 
 vim.keymap.set("n", "<leader>a", function()
-  if vim.bo.filetype == "NvimTree" then
-    vim.cmd("wincmd p")
+  -- 現在のバッファが neo-tree かどうかを確認
+  if vim.bo.filetype == "neo-tree" then
+    vim.cmd("wincmd p") -- 前のウィンドウ（エディタ側）に戻る
   else
-    local nvimtree_win = nil
+    -- 全てのウィンドウをループして neo-tree を探す
+    local neotree_win = nil
     for _, win in ipairs(vim.api.nvim_list_wins()) do
       local buf = vim.api.nvim_win_get_buf(win)
-      if vim.bo[buf].filetype == "NvimTree" then
-        nvimtree_win = win
+      if vim.bo[buf].filetype == "neo-tree" then
+        neotree_win = win
         break
       end
     end
-    if nvimtree_win then
-      vim.api.nvim_set_current_win(nvimtree_win)
+
+    if neotree_win then
+      vim.api.nvim_set_current_win(neotree_win)
+    else
+      -- もし neo-tree が開いていない場合に自動で開くなら以下を追記（任意）
+      vim.cmd("Neotree focus")
     end
   end
-end, { desc = "Switch focus between NvimTree and editor" })
+end, { desc = "Switch focus between Neo-tree and editor" })
 
 vim.keymap.set("n", "<C-t>", "<cmd>tabnew<CR>", { desc = "New tab" })
 vim.keymap.set("n", "<C-e>", "<cmd>bd!<CR>", { desc = "Close tab" })

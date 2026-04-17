@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     lsp = {
       override = {
