@@ -9,7 +9,7 @@ return {
     require("toggleterm").setup({
       direction = "float",
       size = 12,
-      start_in_insert = true,
+      start_in_insert = false,
     })
 
     function _G.set_terminal_keymaps()
