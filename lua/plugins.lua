@@ -27,10 +27,11 @@ require("lazy").setup({
     { import = "plugins.snacks" },
     { import = "plugins.noice" },
     { import = "plugins.trouble" },
+    { import = "plugins.lazygit" },
   },
 
   defaults = { lazy = false, version = false },
-  install = { colorscheme = { "material" } },
+  install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
   performance = {
     rtp = {
