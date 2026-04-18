@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
 -- リーダーキーマップ
-keymap.set("n", "<leader>q", "<cmd>Neotree<CR>", { desc = "Toggle file explorer" })
+keymap.set("n", "<leader>q", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer" })
 
 -- 自動ペアリング
 local npairs = require("nvim-autopairs")

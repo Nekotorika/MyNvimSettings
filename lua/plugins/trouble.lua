@@ -8,6 +8,9 @@ return {
       { "<leader>tr", "<cmd>Trouble lsp_references<cr>", desc = "References" },
       { "<leader>tq", "<cmd>Trouble quickfix<cr>", desc = "Quickfix" },
     },
-    opts = {},
+    opts = {
+      use_diagnostic = true,
+      vim.diagnostic.config({ virtual_text = true }),
+    },
   },
 }
