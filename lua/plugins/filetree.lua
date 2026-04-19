@@ -19,11 +19,15 @@ return {
     },
     config = function()
       require("neo-tree").setup({
-        winbar = false,
         window = {
           position = "left",
           width = 35,
           mappings = {},
+        },
+
+        source_selector = {
+          winbar = false,
+          statusline = false,
         },
 
         filesystem = {
