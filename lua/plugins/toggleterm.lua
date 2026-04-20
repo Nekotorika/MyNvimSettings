@@ -11,7 +11,7 @@ return {
     -- ========================================
     toggleterm.setup({
       direction = "float",
-      start_in_insert = true,
+      start_in_insert = false,
       shade_terminals = false,
       float_opts = {
         border = "rounded",

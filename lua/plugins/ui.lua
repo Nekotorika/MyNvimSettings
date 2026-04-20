@@ -80,4 +80,11 @@ return {
     },
     opts = {},
   },
+  {
+    "LudoPinelli/comment-box.nvim",
+    keys = {
+      { "<leader>cb", "<cmd>CBccbox<CR>", mode = { "n", "v" }, desc = "Comment Box: Centered" },
+      { "<leader>cl", "<cmd>CBccline<CR>", mode = { "n", "v" }, desc = "Comment Line: Centered" },
+    },
+  },
 }

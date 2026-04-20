@@ -19,6 +19,7 @@ return {
       styles = {
         comments = { "italic" },
       },
+
       integrations = {
         snacks = true,
         telescope = true,
